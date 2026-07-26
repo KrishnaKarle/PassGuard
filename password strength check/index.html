@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassGuard</title>
+    <meta name="description" content="PassGuard is a modern password strength checker and generator." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="./static/css/style.css" />
+  </head>
+  <body>
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+    <div class="background-glow glow-3"></div>
+
+    <header class="topbar">
+      <a href="./index.html" class="brand">
+        <span class="brand-icon"><i class="fa-solid fa-shield-halved"></i></span>
+        <span>PassGuard</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#checker">Checker</a>
+        <a href="#generator">Generator</a>
+        <a href="#tips">Tips</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Cybersecurity-grade password intelligence</p>
+        <h1>Stop weak passwords before they become your weakest link.</h1>
+        <p class="hero-text">PassGuard helps you measure strength, generate secure credentials, and learn better habits with a modern experience built for privacy-first security.</p>
+        <div class="hero-actions">
+          <a href="#checker" class="primary-btn">Check Password</a>
+          <a href="#generator" class="secondary-btn">Generate Secure Password</a>
+        </div>
+        <div class="trust-badges">
+          <span><i class="fa-solid fa-bolt"></i> Real-time analysis</span>
+          <span><i class="fa-solid fa-lock"></i> Privacy first</span>
+          <span><i class="fa-solid fa-shield"></i> Strong recommendations</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="visual-ring"></div>
+          <div class="visual-bubble bubble-1"></div>
+          <div class="visual-bubble bubble-2"></div>
+          <div class="visual-bubble bubble-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid" id="checker">
+      <div class="glass-card card-large">
+        <div class="section-heading">
+          <p class="eyebrow">Password checker</p>
+          <h2>Analyze strength instantly</h2>
+        </div>
+        <div class="checker-controls">
+          <div class="input-group">
+            <input type="password" id="passwordInput" placeholder="Enter password to assess" />
+            <button class="icon-btn" id="toggleVisibility"><i class="fa-solid fa-eye"></i></button>
+            <button class="icon-btn" id="clearInput"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div class="actions-row">
+            <button class="primary-btn" id="analyzeBtn">Scan Password</button>
+            <button class="secondary-btn" id="pasteBtn">Paste</button>
+          </div>
+        </div>
+        <div class="meter-card">
+          <div class="meter-header">
+            <span class="meter-label">Strength</span>
+            <span class="meter-value" id="strengthValue">Very Weak</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill" id="meterFill"></div>
+          </div>
+          <p id="strengthMessage">Start typing to evaluate your password.</p>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span>Score</span>
+              <strong id="scoreValue">0%</strong>
+            </div>
+            <div class="stat-card">
+              <span>Entropy</span>
+              <strong id="entropyValue">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Length</span>
+              <strong id="lengthValue">0</strong>
+            </div>
+          </div>
+        </div>
+        <div class="suggestions-panel">
+          <h3>What to improve</h3>
+          <ul id="suggestionsList"></ul>
+        </div>
+      </div>
+
+      <div class="glass-card card-small">
+        <div class="section-heading">
+          <p class="eyebrow">Security tips</p>
+          <h2>Why it matters</h2>
+        </div>
+        <div class="tip-list">
+          <div class="tip-item"><i class="fa-solid fa-ruler-combined"></i><span>Use at least 16 characters.</span></div>
+          <div class="tip-item"><i class="fa-solid fa-layer-group"></i><span>Mix uppercase, lowercase, numbers, and symbols.</span></div>
+          <div class="tip-item"><i class="fa-solid fa-repeat"></i><span>Avoid reused credentials across sites.</span></div>
+          <div class="tip-item"><i class="fa-solid fa-fingerprint"></i><span>Turn on MFA wherever possible.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid" id="generator">
+      <div class="glass-card card-large">
+        <div class="section-heading">
+          <p class="eyebrow">Password generator</p>
+          <h2>Create a strong password in one click</h2>
+        </div>
+        <div class="generator-box">
+          <input type="text" id="generatedPassword" readonly />
+          <div class="actions-row">
+            <button class="primary-btn" id="generateBtn">Generate</button>
+            <button class="secondary-btn" id="copyBtn">Copy</button>
+          </div>
+        </div>
+        <div class="generator-options">
+          <label><input type="range" id="lengthRange" min="8" max="32" value="16" /> <span id="lengthValueLabel">16 chars</span></label>
+          <label><input type="checkbox" id="uppercaseCheck" checked /> Uppercase</label>
+          <label><input type="checkbox" id="lowercaseCheck" checked /> Lowercase</label>
+          <label><input type="checkbox" id="numberCheck" checked /> Numbers</label>
+          <label><input type="checkbox" id="symbolCheck" checked /> Symbols</label>
+          <label><input type="checkbox" id="excludeCheck" /> Exclude similar characters</label>
+        </div>
+      </div>
+      <div class="glass-card card-small">
+        <div class="section-heading">
+          <p class="eyebrow">Recent passwords</p>
+          <h2>Last generated</h2>
+        </div>
+        <ul class="recent-list" id="recentList"></ul>
+      </div>
+    </section>
+
+    <section class="glass-card section-block" id="tips">
+      <div class="section-heading">
+        <p class="eyebrow">Security education</p>
+        <h2>Essential password habits</h2>
+      </div>
+      <div class="cards-grid">
+        <article class="info-card"><h3>Use long passwords</h3><p>Length matters more than complexity alone. Aim for 16+ characters.</p></article>
+        <article class="info-card"><h3>Never reuse</h3><p>Unique passwords reduce the blast radius of a single breach.</p></article>
+        <article class="info-card"><h3>Enable MFA</h3><p>Multi-factor authentication adds a strong backup layer.</p></article>
+        <article class="info-card"><h3>Use a password manager</h3><p>Store and generate credentials safely instead of remembering everything.</p></article>
+        <article class="info-card"><h3>Avoid personal info</h3><p>Names, birthdays, and pet names are easy to guess.</p></article>
+        <article class="info-card"><h3>Rotate regularly</h3><p>Update critical credentials if you suspect exposure.</p></article>
+      </div>
+    </section>
+
+    <section class="glass-card section-block" id="faq">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>What makes a password strong?</summary>
+          <p>Length, unpredictability, and diversity of characters all increase strength.</p>
+        </details>
+        <details>
+          <summary>What is entropy?</summary>
+          <p>Entropy measures how hard a password is to guess based on possible combinations.</p>
+        </details>
+        <details>
+          <summary>Why avoid dictionary words?</summary>
+          <p>Dictionary words are easier for attackers to guess with wordlist attacks.</p>
+        </details>
+        <details>
+          <summary>Why use symbols?</summary>
+          <p>Symbols expand the character set and raise the search space dramatically.</p>
+        </details>
+        <details>
+          <summary>Should I use password managers?</summary>
+          <p>Yes. Password managers make secure, unique credentials practical for everyday use.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section-grid" id="about">
+      <div class="glass-card card-large">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Built for modern security teams and everyday users</h2>
+        </div>
+        <p class="about-text">PassGuard combines elegant UX with practical password evaluation. The analysis runs locally in the browser and is ready to be deployed as a static site on Netlify.</p>
+      </div>
+      <div class="glass-card card-small">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Get in touch</h2>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <textarea rows="4" placeholder="Message" required></textarea>
+          <button class="primary-btn" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <a href="./index.html" class="brand"><span class="brand-icon"><i class="fa-solid fa-shield-halved"></i></span><span>PassGuard</span></a>
+        <p>Secure habits start with better awareness.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <a href="#checker">Password checker</a>
+        <a href="#generator">Generator</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      </div>
+    </footer>
+
+    <script src="./static/js/app.js"></script>
+  </body>
+</html>

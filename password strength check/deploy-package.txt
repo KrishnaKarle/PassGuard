@@ -1,0 +1,8 @@
+Deploy this folder to Netlify.
+
+Required files:
+- index.html
+- static/css/style.css
+- static/js/app.js
+- static/images/ (optional)
+- netlify.toml
